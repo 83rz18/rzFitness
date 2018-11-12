@@ -9,6 +9,3 @@
 ![alt text](https://rickyrodriguez.name/image/3welcome.png "Welcome Page")
 # 4
 ![alt text](https://rickyrodriguez.name/image/4output.png "Output Page")
-# Overview
-
-![alt text](https://rickyrodriguez.name/image/design.pdf "Welcome Page")
