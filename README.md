@@ -1,7 +1,7 @@
 ![alt text](https://rickyrodriguez.name/image/rzRepeat2.png "Logo Title Text 1")
 # **rzFitness**
 ### Body Composition Module 
-![alt text](https://rickyrodriguez.name/image/Artboard4.png "Output Page")
+![alt text](https://rickyrodriguez.name/image/design.png "Output Page")
 # 1
 ![alt text](https://rickyrodriguez.name/image/1signup.png "Signup Page")
 # 2
