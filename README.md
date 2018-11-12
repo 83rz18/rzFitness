@@ -2,10 +2,10 @@
 # **rzFitness**
 ### Body Composition Module 
 
-![alt text](https://rickyrodriguez.name/image/Artborad1.png "Output Page")
-![alt text](https://rickyrodriguez.name/image/Artborad2.png "Output Page")
-![alt text](https://rickyrodriguez.name/image/Artborad3.png "Output Page")
-![alt text](https://rickyrodriguez.name/image/Artborad4.png "Output Page")
+![alt text](https://rickyrodriguez.name/image/Artboard1.png "Output Page")
+![alt text](https://rickyrodriguez.name/image/Artboard2.png "Output Page")
+![alt text](https://rickyrodriguez.name/image/Artboard3.png "Output Page")
+![alt text](https://rickyrodriguez.name/image/Artboard4.png "Output Page")
 # 1
 ![alt text](https://rickyrodriguez.name/image/1signup.png "Signup Page")
 # 2
