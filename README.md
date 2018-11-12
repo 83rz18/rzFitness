@@ -1,2 +1,2 @@
 # rzFitness
-This is a web app that will perform computation tasks for a personal fitness trainer. 
+##A web app that will perform the computation tasks of a personal fitness trainer. 
