@@ -88,6 +88,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         body{ font: 14px sans-serif; }
         .wrapper{ width: 50%; padding: 20px; margin-left: 25%}
     </style>
+    
+    <script type="text/javascript" src="js/newheader.js"></script>
 </head>
 <body>
     <div class="wrapper">
