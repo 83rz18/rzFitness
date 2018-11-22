@@ -16,7 +16,7 @@ function preload() {
 }
 // call preload
 preload(
-    "https://rickyrodriguez.name/image/rzRepeat1.png"
+    "https://rickyrodriguez.name/image/rzGold.png"
 )
 //when document is loaded
 $( document ).ready(function() {
@@ -45,7 +45,7 @@ $( document ).ready(function() {
             document.getElementById(sel.slice(1)).style[attr] = val;
         }else if(sel[0] == '.'){//for each!!!!
             var elements = document.body.getElementsByClassName(sel.slice(1));
-            console.log(elements, sel[0], sel.slice(1));
+           // console.log(elements, sel[0], sel.slice(1));
       
             
            
@@ -57,15 +57,22 @@ $( document ).ready(function() {
         }
     };
     newForm = function(parent, id, putOne, putTwo){
+    
+        //convert agruments into array 
+        let args =  Array.from(arguments);
+        console.log(args.slice(2))
+        
     	frm = document.createElement('form');
      	frm.id = id;
+     	frm.action = 'index.php';
      	document.getElementById(parent).appendChild(frm);
-     	let inputs = [putOne,putTwo];
-     	for(i in inputs){
-     	    if (inputs[i]!=undefined){
+     	for(i in args.slice(2)){
+     	    if (args.slice(2)[i]!=undefined){
      	        put = document.createElement('input');
-     	        put. id = inputs[i];
-     	        put.type = inputs[i];
+     	        put. id = args.slice(2)[i];
+     	        put.type = args.slice(2)[i];
+     	        put.value = args.slice(2)[i];
+     	        put.name = args.slice(2)[i];
      	        document.getElementById(id).appendChild(put);
      	    }
      	    
@@ -100,7 +107,7 @@ $( document ).ready(function() {
             
     document.body.appendChild(images[0]);
     document.getElementById('img0').className='fixed';
-    csSheet('#img0{filter:invert(100%) grayscale(100%) brightness(120%) sepia(90%) hue-rotate(5deg) saturate(700%) contrast(0.7);transition:top .5s,height .5s;height:10vh;top:5.45vh;left:5.45vh}');     
+    csSheet('#img0{transition:top .5s,height .5s;height:10vh;top:5.45vh;left:5.45vh}');     
     
     
     newForm('navTwo', 'Create An Account'); 
@@ -109,7 +116,11 @@ $( document ).ready(function() {
     cssRule('#submitCreate An Account','height','10vh')
     cssRule('#submitCreate An Account','width','calc(25vw/2*3)')
     cssRule('#submitCreate An Account','margin-right','4.45vh')
-    cssRule('#submitCreate An Account','background','linear-gradient( to right,rgba(255,255,255,0.75),rgba(255,255,255,0.5),rgba(255,255,255,0.5),rgba(255,255,255,0.75)),linear-gradient(  #575959, white)')
+    cssRule('#submitCreate An Account','color','rgba(255,255,255,0.75')
+    cssRule('#submitCreate An Account','background-color','rgba(255,94,0,0.1')
+    
+
+    //cssRule('#submitCreate An Account','background','linear-gradient( to right,rgba(255,255,255,0.75),rgba(255,255,255,0.5),rgba(255,255,255,0.5),rgba(255,255,255,0.75)),linear-gradient(  #575959, white)')
     
     
     
@@ -122,8 +133,14 @@ $( document ).ready(function() {
     cssRule('#Log In','width','99vw')
     cssRule('#username','height','10vh')
     cssRule('#password','height','10vh')
-    cssRule('#username','background','transparent')
-    cssRule('#password','background','transparent')
+    cssRule('#username','background-color','rgba(0,255,255,0.09)')
+    cssRule('#password','background-color','rgba(0,255,255,0.09)')
+    
+    
+
+
+
+    
     cssRule('#username','width','calc(25vw/2)')
     cssRule('#password','width','calc(25vw/2)')
     cssRule('#password','float','right')
@@ -132,9 +149,11 @@ $( document ).ready(function() {
     cssRule('#submitLog In','background','transparent')
     cssRule('#submitLog In','height','10vh')
     cssRule('#submitLog In','width','calc(25vw/2)')
-    cssRule('#submitLog In','background','linear-gradient(to right, #575959,rgba(0,0,0,0),rgba(0,0,0,0),rgba(0,0,0,0), #575959),linear-gradient(  #353737,#575959,#575959,#575959, #353737)')
-    cssRule('#username','background','linear-gradient(to right, #575959,rgba(0,0,0,0),rgba(0,0,0,0),rgba(0,0,0,0), #575959),linear-gradient(  #353737,#575959,#575959,#575959, #353737)')
-    cssRule('#password','background','linear-gradient(to right, #575959,rgba(0,0,0,0),rgba(0,0,0,0),rgba(0,0,0,0), #575959),linear-gradient(  #353737,#575959,#575959,#575959, #353737)')
+    cssRule('#submitLog In','color','#353737')
+    cssRule('#submitLog In','background-color','rgba(0,255,255,0.15)')
+    //cssRule('#submitLog In','background','linear-gradient(to right, #575959,rgba(0,0,0,0),rgba(0,0,0,0),rgba(0,0,0,0), #575959),linear-gradient(  #353737,#575959,#575959,#575959, #353737)')
+    //cssRule('#username','background','linear-gradient(to right, #575959,rgba(0,0,0,0),rgba(0,0,0,0),rgba(0,0,0,0), #575959),linear-gradient(  #353737,#575959,#575959,#575959, #353737)')
+    //cssRule('#password','background','linear-gradient(to right, #575959,rgba(0,0,0,0),rgba(0,0,0,0),rgba(0,0,0,0), #575959),linear-gradient(  #353737,#575959,#575959,#575959, #353737)')
     
    
 
