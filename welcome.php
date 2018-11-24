@@ -1,7 +1,4 @@
-<?php
-
-session_start(); 
-// welcome page
+<?php session_start(); // welcome page
 
 // Include config file
 require_once 'config.php';
@@ -86,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 // set variables
 $username = $_SESSION['username'];
 //select records
-$sql = "SELECT date, weight, waist, wrist, hip, forearm FROM assessments WHERE accountID = ".$_SESSION['id']." ORDER BY date DESC LIMIT 1" ;
+$sql = "SELECT assessments.date,  assessments.weight,  assessments.waist,  assessments.wrist,  assessments.hip,  assessments.forearm, users.sex FROM assessments RIGHT JOIN users ON assessments.accountID = users.id WHERE accountID = ".$_SESSION['id']." ORDER BY date DESC LIMIT 1" ;
 $result = $link->query($sql);
 $link->close();
 if ($result->num_rows > 0) {
@@ -98,6 +95,7 @@ if ($result->num_rows > 0) {
         $wrist = $row["wrist"];
         $hip = $row["hip"];
         $forearm = $row["forearm"];
+        $sex = $row["sex"];
     }     
 }
 ?>
@@ -117,14 +115,22 @@ if ($result->num_rows > 0) {
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script type="text/javascript">
-
+      
       let weight = <?php echo $weight; ?>;
-      let waist = <?php echo $waist; ?>;
+    let waist = <?php echo $waist; ?>;
       let wrist = <?php echo $wrist; ?>;
       let hip = <?php echo $hip; ?>;
       let forearm = <?php echo $forearm; ?>;
-      
-      let lean = (weight*0.732+8.987) + (wrist/3.14) - (waist*0.157) - (hip*0.249) + (forearm*0.434);
+      let lean = 0;
+      if(<?php echo $sex; ?> = 'Male'){
+      	console.log('male');
+      	lean = (weight*1.082+94.42)-(waist*4.15);
+      }else if(<?php echo $sex; ?> = 'Female'){
+      	console.log('female');
+      	lean = (weight*0.732+8.987) + (wrist/3.14) - (waist*0.157) - (hip*0.249) + (forearm*0.434);
+      }else{
+      	lean = ((weight*1.082+94.42)-(waist*4.15) + (weight*0.732+8.987) + (wrist/3.14) - (waist*0.157) - (hip*0.249) + (forearm*0.434))/2;
+      }; 
       let fat = weight - lean;
 
 
@@ -150,26 +156,28 @@ if ($result->num_rows > 0) {
 
         // Set chart options
         var options = {
-                       'width':'100%',
-                       'height':300,
-                        'is3D': true
-        };
+                       'width':400,
+                       'height':300};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
+     
     </script>
 
 </head>
 <body>
     <div class="wrapper">
         <!--Greetings-->
-        <h2><?php echo "Hello, ",$username,'!<br>'; ?></h2>
+        <h2><?php echo "Hello, ",$_SESSION['username'],'!<br>'; ?></h2>
         <div class="form-group">
             <a href='logout.php'><input type="submit" class="btn btn-primary" value="Logout"></a>
         </div>
+        
         <p>Last Assessment: <?php echo $date,'<br>'; ?></p>
+        <!--Div that will hold the pie chart-->
+        <div id="chart_div"></div> 
         
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($weight_err)) ? 'has-error' : ''; ?>">
@@ -202,8 +210,7 @@ if ($result->num_rows > 0) {
             </div>
         </form>
         
-        <!--Div that will hold the pie chart-->
-        <div id="chart_div"></div> 
+        
     </div>    
 </body>
 </html>
