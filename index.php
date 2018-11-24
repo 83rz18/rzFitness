@@ -80,37 +80,55 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="../image/rzRepeat2.png">
-    <title>Fitness</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 50%; padding: 20px; margin-left: 25%}
-    </style>
-    
-    <script type="text/javascript" src="js/newheader.js"></script>
+     <meta charset="UTF-8">
+    <link rel="icon" href="../image/rzRepeat1.png">
+    <title>| Index</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="js/newheader.js"></script>-->
+    <script type="text/javascript">
+    	$( document ).ready(function() {
+   //scroll ;
+    // Create cross browser requestAnimationFrame method:
+    window.requestAnimationFrame = window.requestAnimationFrame
+    || window.mozRequestAnimationFrame
+    || window.webkitRequestAnimationFrame
+    || window.msRequestAnimationFrame
+    || function(f){setTimeout(f, 1000/60)}
+    function scroll(){
+       var pos = window.pageYOffset ;
+       if (pos<=50){
+ 	        document.getElementById('navOne').style.top='0vh';
+ 		document.getElementById('navTwo').style.top='10vh';
+ 		document.getElementById('img0').style.top='5.45vh';
+ 		document.getElementById('img0').style.height='10vh';
+       }else{
+ 		document.getElementById('navOne').style.top='-10vh';
+ 		document.getElementById('navTwo').style.top='0vh';
+ 		document.getElementById('img0').style.top='1.91vh';
+     		document.getElementById('img0').style.height='6.18vh';
+       }
+    }
+    window.addEventListener('scroll', function(){requestAnimationFrame(scroll)}, false)
+    $(window).resize(scroll);
+});  
+    </script>
 </head>
 <body>
-    <div class="wrapper">
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username:<sup>*</sup></label>
-                <input type="text" name="username"class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password:<sup>*</sup></label>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-            </div>
-            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+    <div id="navOne" class="nav fixed">
+    	<form id="logIn" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+     		<input type="password" id="password" name="password" value="<?php echo $password_err; ?>">
+                <input type="text" id="username" name="username" class="form-control" value="<?php echo $username_err; ?>">
+                <input id="submitLogIn" type="submit" class="btn btn-primary" value="Log In">
         </form>
-    </div>    
+    </div> 
+    <div id='navTwo' class="nav fixed">
+        <form action="register.php" >
+        	<input id="create" type="submit" value="Create An Account"/>
+        </form>
+    </div>
+    <img id="img0" class="fixed" src="https://rickyrodriguez.name/image/rzGold.png" /> <!--  -->
 </body>
 </html>
